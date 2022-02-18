@@ -119,11 +119,6 @@ class PageParser(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
 
-    def handle_starttag(self, startTag, attrs):
-    def handle_data(self, data):
-
-
-
 
 
 if __name__ == "__main__":
@@ -132,17 +127,20 @@ if __name__ == "__main__":
     coursePage = coursePage = urllib2.urlopen("https://ocw.mit.edu/courses/"+courseName)
     parser = CourseParser()
     parser.feed(str(coursePage.read().decode("UTF-8")))
-    #print(parser.courseList)
+    print(parser.courseList)
     
     print("Course Number?")
     classNum = input()
-    #print(parser.searchCourseNum(classNum))
+    print(parser.searchCourseNum(classNum))
     for res in parser.searchCourseNum(classNum):
         print(parser.courseList[res])
-        courseHomePage = courseHomePage = urllib2.urlopen("https://ocw.mit.edu"+parser.courseList[parser.searchCourseNum(classNum)[int(a)-1]][0])
-        homeParser = HomepageParser()
-        homeParser.feed(str(courseHomePage.read().decode("UTF-8")))
-        print(homeParser.videoHomes, "\n")
-        print(homeParser.problemHomes, "\n")
-        print(homeParser.lectureNoteHomes, "\n")
+
+    print("Which one?")
+    a = input()
+    courseHomePage = courseHomePage = urllib2.urlopen("https://ocw.mit.edu"+parser.courseList[parser.searchCourseNum(classNum)[int(a)-1]][0])
+    homeParser = HomepageParser()
+    homeParser.feed(str(courseHomePage.read().decode("UTF-8")))
+    print(homeParser.videoHomes, "\n")
+    print(homeParser.problemHomes, "\n")
+    print(homeParser.lectureNoteHomes, "\n")
 
