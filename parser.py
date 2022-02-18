@@ -101,6 +101,8 @@ class HomepageParser(HTMLParser):
     def handle_data(self, data):
         if(all(self.addAsHome)):
             data = self.pattern.sub('', data)
+
+            # used & because some lectures provide with captions: video and caption link lead to the same page
             if(bool(re.search(r'video', self.videoHomes[-1][0])) | bool(re.search(r'[Vv]ideo', data))):
                 self.videoHomes[-1] = (data, self.videoHomes[-1][0])
             elif(bool(re.search(r'(exam|assignment|problem)', self.videoHomes[-1][0])) | bool(re.search(r'([Ee]xam|[Aa]ssignment|[Pp]roblem)', data))):
@@ -118,11 +120,19 @@ class PageParser(HTMLParser):
     
     def __init__(self):
         HTMLParser.__init__(self)
+        self.handleMode = None
+        self.downloadList = list()
 
     def handle_starttag(self, startTag, attrs):
-    def handle_data(self, data):
-
-
+        if(isListNotNull(attrs) & (startTag == 'a')):
+            i = 0
+            for res in map(lambda j: j[0]=='href', attrs):
+                if(res & isListNotNull(attrs[i])):
+                    if(re.search(r'\.mp4$', attrs[i][1])):
+                        self.downloadList.append(attrs[i][1])
+                    elif(re.search(r'\.pdf$', attrs[i][1])):
+                        self.downloadList.append(attrs[i][1])
+                i += 1 
 
 
 
@@ -132,17 +142,57 @@ if __name__ == "__main__":
     coursePage = coursePage = urllib2.urlopen("https://ocw.mit.edu/courses/"+courseName)
     parser = CourseParser()
     parser.feed(str(coursePage.read().decode("UTF-8")))
-    #print(parser.courseList)
     
-    print("Course Number?")
+    print("\nCourse Number?")
     classNum = input()
-    #print(parser.searchCourseNum(classNum))
+    i = 0
+    homePageList = list(tuple())
     for res in parser.searchCourseNum(classNum):
-        print(parser.courseList[res])
-        courseHomePage = courseHomePage = urllib2.urlopen("https://ocw.mit.edu"+parser.courseList[parser.searchCourseNum(classNum)[int(a)-1]][0])
+        print("\n\t", i+1, ". ", parser.courseList[res][2])
+        courseHomePage = courseHomePage = urllib2.urlopen("https://ocw.mit.edu"+parser.courseList[parser.searchCourseNum(classNum)[i]][0])
         homeParser = HomepageParser()
         homeParser.feed(str(courseHomePage.read().decode("UTF-8")))
-        print(homeParser.videoHomes, "\n")
-        print(homeParser.problemHomes, "\n")
-        print(homeParser.lectureNoteHomes, "\n")
+        print("\t\tVideos")
+    
+        homePageList.append((homeParser.videoHomes, homeParser.problemHomes, homeParser.lectureNoteHomes))
+
+        for videos in homeParser.videoHomes:
+            print("\t\t\t", videos[0], "("+videos[1]+")")
+            if(videos[0] != homeParser.videoHomes[-1][0]):
+                print(", ")
+        print("\n\t\tProblems")
+        for probs in homeParser.problemHomes:
+            print("\t\t\t", probs[0], "("+probs[1]+")")
+            if(probs[0] != homeParser.problemHomes[-1][0]):
+                print(", ")
+        print("\n\t\tLecture Notes")
+        for lecnotes in homeParser.lectureNoteHomes:
+            print("\t\t\t", lecnotes[0], "("+lecnotes[1]+")")
+            if(lecnotes[0] != homeParser.lectureNoteHomes[-1][0]):
+                print(", ")
+        
+        i += 1
+
+    print("\n\nSelect One.")
+    lecNum = input()
+    print("Which content do you want?(v/p/l)")
+    match input():
+        case 'v':
+            cont = 0
+        case 'p':
+            cont = 1
+        case 'l':
+            cont = 2
+    print("Which one?")
+    contNum = input()
+    pageParser = PageParser()
+    print(homePageList[int(lecNum)-1][int(cont)])
+    desiredPage = desiredPage = urllib2.urlopen("https://ocw.mit.edu"+homePageList[int(lecNum)-1][int(cont)][int(contNum)-1][1])
+    pageParser.feed(str(desiredPage.read().decode("UTF-8")))
+
+    print("\n", pageParser.downloadList)
+    print(len(pageParser.downloadList))
+
+
+    
 
