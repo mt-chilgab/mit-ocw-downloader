@@ -36,8 +36,6 @@ class CourseParser(HTMLParser):
                     self.courseList.append((attrs[2][1], ))
             else:
                 self.addAsCourse = False
-        else:
-            self.addAsCourse = False
 
     def handle_data(self, data):
         if(self.addAsCourse):
@@ -97,7 +95,7 @@ class HomepageParser(HTMLParser):
 
     def handle_data(self, data):
         if(all(self.addAsHome)):
-            if(bool(re.match(r'#[Vv]ideo|[Vv]ideo', self.videoHomes[-1][0])) | bool(re.match(r'[Vv]ideo', data))):
+            if(bool(re.match(r'[\s]video', self.videoHomes[-1][0])) | bool(re.match(r'[\s]video', data))):
                 self.videoHomes[-1] = (data, self.videoHomes[-1][0])
             else:
                 del self.videoHomes[-1]
@@ -114,10 +112,12 @@ class HomepageParser(HTMLParser):
 
     
 
-#class PageParser(HTMLParser):
+class PageParser(HTMLParser):
     
-#    def __init__(self):
-        
+    def __init__(self):
+        HTMLParser.__init__(self)
+
+
 
 if __name__ == "__main__":
     print("Course Name?")
