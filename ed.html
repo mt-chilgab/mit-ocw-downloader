@@ -1,0 +1,2305 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+      
+      
+        
+    
+    
+    
+    
+
+      
+      
+      <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />  
+        
+        <title>Edgerton Center | MIT OpenCourseWare | Free Online Course Materials</title>
+    <!-- Begin Automatic Metadata Insertion -->
+    <meta content="edgerton-center" name="WT.cg_n" />
+    <meta content="" name="WT.cg_s" />
+    <meta content="" name="Description" />
+    <meta content="" name="keywords" />
+    <meta content="Edgerton Center | MIT OpenCourseWare"
+          name="Search_Display" />
+    <meta content="Unlocking knowledge, empowering minds. Free course notes, videos, instructor insights and more from MIT."
+          property="og:description" />
+    <meta content="https://ocw.mit.edu/images/MIT_dome.jpg"
+          property="og:image" />
+    <!-- End Automatic Metadata Insertion -->
+
+	<link title="default" rel="stylesheet" type="text/css"
+       href="/styles/grid.css" /><link title="default"
+    rel="stylesheet" type="text/css" href="/styles/base.css" /><link
+    title="default" rel="stylesheet" type="text/css"
+    href="/styles/menu.css" /><link title="default"
+    rel="stylesheet" type="text/css"
+    href="/styles/jquery.bubblepopup.css" /><link
+    title="default" rel="stylesheet" type="text/css"
+    href="/styles/search.css" /><link title="default"
+    rel="stylesheet" type="text/css"
+    href="/styles/global.css" /><link title="default"
+    rel="stylesheet" type="text/css"
+    href="/styles/multiple-select.css" /><link
+    title="default" rel="stylesheet" type="text/css"
+    href="/styles/courses_new.css" /><link title="default"
+    rel="stylesheet" type="text/css"
+    href="/styles/help-popup.css" />
+	<link href="/xml/ocwcc.rdf" type="application/rdf+xml" rel="metadata" />
+	<link rel="canonical"
+       href="https://ocw.mit.edu/courses/edgerton-center/">
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	
+	<link rel="alternate" type="application/rss+xml"
+       href="/rss/new/mit-newcourses-EC.xml"
+       title="Edgerton Center" />
+      
+	
+	<script type="text/javascript" src="/scripts/jquery.js"></script>
+	<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+	<script type="text/javascript"
+         src="/scripts/ocw-media-utils.js"></script>
+	<script type="text/javascript" src="/scripts/ocw.js"></script>
+	<script type="text/javascript"
+         src="/scripts/googleanalytics.js"></script>
+	<script type="text/javascript"
+         src="/scripts/jquery.bubblepopup.min.js"></script>
+	<script type="text/javascript"
+         src="/scripts/courseList-popup.js"></script>
+	<script type="text/javascript" src="/scripts/help-popup.js"></script>
+	<script type="text/javascript"
+         src="/scripts/multiple-select.js"></script>
+	<script type="text/javascript"
+         src="/scripts/SortAndFilter.js"></script>
+	
+	
+	
+    
+    
+    <script type="text/javascript">
+    $.fn.courserotator = function(previous, next, options){
+        var sliderList = $(this).children()[0];
+        if (sliderList) {
+            var increment = $(sliderList).children().outerWidth("true"),
+            elmnts = $(sliderList).children(),
+            numElmts = elmnts.length,
+            sizeFirstElmnt = increment,
+            shownInViewport = Math.round($(this).width() / sizeFirstElmnt),
+            firstElementOnViewPort = 1,
+            isAnimating = false;
+            
+            var random_number = Math.floor(Math.random()*numElmts);
+            if(random_number!=0) {firstElementOnViewPort = random_number+1;}
+            
+            if (numElmts > 1){
+                jQuery(previous).css('display','block');
+                jQuery(next).css('display','block');
+                jQuery(sliderList).parents('#coro').css('width','611px');
+                jQuery(sliderList).parents('#coro2').css('width','690px');
+            }
+            
+            for (i = 0; i < shownInViewport; i++) {
+                $(sliderList).css('width',(numElmts+shownInViewport)*increment + increment + "px");
+                $(sliderList).append($(elmnts[i]).clone());
+                $(sliderList).css('left', "-" + random_number * sizeFirstElmnt + "px"); 
+                 }
+                                           
+            $(previous).click(function(event){
+                if (!isAnimating) {
+                    if (firstElementOnViewPort == 1) {
+                        $(sliderList).css('left', "-" + numElmts * sizeFirstElmnt + "px");
+                        firstElementOnViewPort = numElmts;
+                    }
+                    else {
+                        firstElementOnViewPort--;
+                    }
+                    
+                    $(sliderList).animate({
+                        left: "+=" + increment,
+                        y: 0,
+                        queue: true
+                    }, "swing", function(){isAnimating = false;});
+                    isAnimating = true;
+                }                
+            });
+            
+            $(next).click(function(event){
+                if (!isAnimating) {
+                    if (firstElementOnViewPort > numElmts) {
+                        firstElementOnViewPort = 2;
+                        $(sliderList).css('left', "0px");
+                    }
+                    else {
+                        firstElementOnViewPort++;
+                    }
+                    $(sliderList).animate({
+                        left: "-=" + increment,
+                        y: 0,
+                        queue: true
+                    }, "swing", function(){isAnimating = false;});
+                    isAnimating = true;
+                }
+            });            
+
+        }
+    };
+    </script>
+    
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#carousel_inner').courserotator('#left_scroll', '#right_scroll');
+            });
+            </script>
+
+
+        <style>
+             ul.courseRow >li {
+                    padding: 5px 1px 5px 0;
+                }
+            .courseListDiv {
+                margin-top:1em;
+                margin-bottom: 15px;
+                display: inline-table;
+                }
+            .noResultsMsg > h3 {
+                    padding-top: 0;
+                    }
+        </style>
+    
+    
+    
+    
+    <script type="text/javascript">
+            $(document).ready(function(){
+                $("select.multiselector").multipleSelect({
+                        'selectAll': false
+                    });
+                    CourseListSortingAndFiltering();
+
+            });
+        </script>
+    <style>
+        #filterCoursesListDiv {
+            display:block;
+        }
+    </style>
+    
+      
+    
+    	<script type="text/javascript">
+			setTimeout(function(){var a=document.createElement("script");
+			var b=document.getElementsByTagName("script")[0];
+			a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0017/3534.js?"+Math.floor(new Date().getTime()/3600000);
+			a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+			
+			//google ads script for footer logos
+			var googletag = googletag || {};
+			googletag.cmd = googletag.cmd || [];
+			(function() {
+			var gads = document.createElement('script');
+			gads.async = true;
+			gads.type = 'text/javascript';
+			var useSSL = 'https:' == document.location.protocol;
+			gads.src = (useSSL ? 'https:' : 'http:') +
+			'//www.googletagservices.com/tag/js/gpt.js';
+			var node = document.getElementsByTagName('script')[0];
+			node.parentNode.insertBefore(gads, node);
+			})();
+            
+            //script for sending the pageview request to GA server
+			ga('send', 'pageview', location.pathname + location.search + location.hash);
+		</script>		
+		<script type="text/javascript">		
+			googletag.cmd.push(function() {
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_1', [145, 53], 'div-gpt-ad-1388181177156-0').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_2', [145, 53], 'div-gpt-ad-1388181177156-1').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_3', [145, 53], 'div-gpt-ad-1388181177156-2').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_4', [145, 53], 'div-gpt-ad-1388181177156-3').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_5', [145, 53], 'div-gpt-ad-1388181177156-4').addService(googletag.pubads());
+			googletag.defineSlot('/1064917/HOME_CORP_LOGO_6', [145, 53], 'div-gpt-ad-1388181177156-5').addService(googletag.pubads());
+			googletag.pubads().enableSingleRequest();		
+			googletag.enableServices();			
+			});
+		</script>		 	
+		
+	   
+		 
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </head>
+    <body itemscope itemtype="http://schema.org/WebPage">
+        
+        <header id="top">
+			<div id="grid">
+				
+				
+					
+<div id="portletwrapper-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572"
+     class="portletWrapper kssattr-portlethash-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572"><div class="portletStaticText portlet-static-site-header"><!--googleoff: index-->
+<div class="grid_6 alpha" id="banner"><a href="/"><img src="/images/ocw_mast.png" class="logo" alt="MIT OpenCourseWare, Massachusetts Institute of Technology" /></a></div>
+<div class="grid_6 omega" id="subscribe"><aside class="module" aria-label="Connect with OCW">
+<table class="social">
+    <tbody>
+        <tr>
+            <td class="socialbutton"><a aria-label="Subscribe to the OCW Newsletter" href="/subscribe/index.htm?utm_source=header"><img src="/images/trans.gif" alt="An icon depicting an envelope." />Subscribe to the OCW Newsletter</a></td>
+            <td><a aria-label="Facebook" href="https://facebook.com/mitocw"><img src="/images/icon_fb.png" alt="Click to visit our Facebook page." /></a>  <a aria-label="Instagram" href="https://www.instagram.com/mitocw/"><img src="/images/icon_ig.png" alt="Click to visit our Instagram page." /></a> <a aria-label="Twitter" href="https://twitter.com/mitocw"><img src="/images/icon_twitter.png" alt="Click to visit our Twitter feed." /></a><a aria-label="YouTube" href="https://www.youtube.com/mitocw" style="font-size: 12.208px;"><img src="/images/icon_yt.png" alt="Click to visit our YouTube page." /></a><span style="font-size: 12.208px;">   </span><a aria-label="Open Matters blog on WordPress" href="https://www.ocw-openmatters.org/" style="font-size: 12.208px;"><img src="/images/icon_wp.png" alt="Click to visit our blog on WordPress." /></a></td>
+        </tr>
+    </tbody>
+</table>
+</aside><nav aria-label="Help Links" class="helplinks">     <a aria-label="OCW Site Help" href="/help">Help</a><span aria-hidden="true">|</span>     <a href="/about/contactus/">Contact Us</a>   </nav></div>
+<div class="clear">&nbsp;</div>
+<!--googleon: index--></div>
+
+</div>
+
+<div id="portletwrapper-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a6d6567612d6d656e75"
+     class="portletWrapper kssattr-portlethash-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a6d6567612d6d656e75"><div class="portletStaticText portlet-static-mega-menu"><div><nav id="mega" class="grid_8 alpha" aria-label="Site">
+<ul id="menu" role="presentation">
+    <li id="menu_home"><a href="/" aria-label="Homepage"><img src="/images/top-nav_home.png" class="home_icon" alt="Click for site home page." /></a><!-- Begin Home Item --></li>
+    <!-- End Home Item -->
+    <li id="drop_1" aria-label="Find Courses"><a href="#" aria-hidden="true">FIND COURSES</a><!-- Begin 5 columns Item -->
+    <div class="dropdown_5columns-a mega-courses">
+    <div class="col_1a">
+    <div class="row_1a"><nav aria-labelledby="mm-find-courses-by">     <span id="mm-find-courses-by" class="nav" aria-hidden="true">Find courses by:</span>
+    <ul class="find_by" role="presentation">
+        <li><a href="/courses/find-by-topic/">Topic</a></li>
+        <li><a href="/courses/find-by-number/">MIT Course Number</a></li>
+        <li><a href="/courses/find-by-department/">Department</a></li>
+    </ul>
+    </nav>     <nav aria-labelledby="mm-collections">     <span id="mm-collections" class="nav" aria-hidden="true">Collections</span>
+    <ul role="presentation">
+        <li><a href="/courses/new-courses/">New Courses</a></li>
+        <li><a href="/courses/most-visited-courses/">Most Visited Courses</a></li>
+        <li><a href="/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+        <li><a href="/courses/audio-video-courses/">Audio/Video Lectures</a></li>
+        <li><a href="/courses/online-textbooks/">Online Textbooks</a></li>
+        <li><a href="/resources/">Supplemental Resources</a></li>
+        <li><a href="/high-school/">OCW Highlights for High School</a></li>
+        <li><a href="/courses/mitx-related-courseware/">MITx &amp; Related OCW Courses</a></li>
+        <li><a href="/courses/mit-open-learning-library/">MIT Open Learning Library</a></li>
+    </ul>
+    </nav>     <nav class="col_1b" aria-labelledby="mm-translated-courses">     <span id="mm-translated-courses" class="nav" aria-hidden="true" style="line-height: 1.3;">Cross-Disciplinary Topic Lists</span>
+    <ul role="presentation">
+        <li><a href="/courses/energy-courses">Energy</a></li>
+        <li><a href="/courses/entrepreneurship">Entrepreneurship</a></li>
+        <li><a href="/courses/environment-courses">Environment</a></li>
+        <li><a href="/courses/intro-programming">Introductory Programming</a></li>
+        <li><a href="/courses/life-sciences">Life Sciences</a></li>
+        <li><a href="/courses/transportation-courses">Transportation</a></li>
+    </ul>
+    </nav></div>
+    <div class="row_1b"><nav aria-labelledby="mm-cross-disciplinary-topic-lists">     <span id="mm-cross-disciplinary-topic-lists" class="nav" aria-hidden="true">Translated Courses</span>
+    <ul role="presentation">
+        <li><a href="/courses/translated-courses/traditional-chinese" aria-label="Traditional Chinese">繁體字 / Traditional Chinese</a></li>
+        <li><a href="/courses/translated-courses/turkish" aria-label="Turkish">Türkçe / Turkish</a></li>
+        <li><a href="/courses/translated-courses/korean" aria-label="Korean">(비디오)한국 / Korean</a></li>
+    </ul>
+    </nav></div>
+    </div>
+    </div>
+    </li>
+    <li id="drop_2"><a href="#" aria-label="For Educators">For Educators</a>
+    <div class="dropdown_1column-a" style="width: 270px;"><nav aria-labelledby="mm-find-courses-by">
+    <ul role="presentation">
+        <li><a href="/educator/chalk-radio-podcast">Chalk Radio Podcast</a></li>
+        <li><a href="/educator/">OCW Educator Portal</a></li>
+    </ul>
+    <ul role="presentation">
+        <li><a href="/courses/instructor-insights/">Instructor Insights by Department</a></li>
+        <li><a href="https://openlearning.mit.edu/campus/digital-innovations/">Residential Digital Innovations </a></li>
+    </ul>
+    <ul role="presentation">
+        <li><a href="/high-school/">OCW Highlights for High School</a></li>
+    </ul>
+    <ul role="presentation">
+        <li><a href="/educator/additional-resources/">Additional Resources</a></li>
+    </ul>
+    </nav></div>
+    </li>
+    <li id="drop_3"><a href="#" aria-hidden="true">Give Now</a>
+    <div class="dropdown_1column-a"><nav class="col_1" aria-label="Donate">
+    <ul role="presentation">
+        <li><a href="/give/">Make a Donation</a></li>
+        <li><a href="/give/why-give/">Why Give?</a></li>
+        <li><a href="/give/our-supporters/">Our Supporters</a></li>
+        <li><a href="/give/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+        <li><a href="/support/">Become a Corporate Sponsor</a></li>
+    </ul>
+    </nav></div>
+    </li>
+    <li id="drop_4"><a href="#" aria-hidden="true">About</a>
+    <div class="dropdown_1column-a"><nav class="col_1" aria-label="About">
+    <ul role="presentation">
+        <li><a href="/about/">About MIT OpenCourseWare</a></li>
+        <li><a href="/about/site-statistics/">Site Statistics</a></li>
+        <li><a href="/about/ocw-stories/">OCW Stories</a></li>
+        <li><a href="/about/newsletter/">Newsletter</a></li>
+        <li><a href="https://chalk-radio.simplecast.com/">Chalk Radio Podcast</a></li>
+        <li><a href="https://www.ocw-openmatters.org/">Open Matters Blog</a></li>
+    </ul>
+    </nav></div>
+    </li>
+</ul>
+</nav></div></div>
+
+</div>
+
+
+
+
+
+<!--googleoff: index-->
+<script>
+  (function() {
+	var cx = '012626166551961672889:owjdpuboktq';
+	var gcse = document.createElement('script');
+	gcse.type = 'text/javascript';
+	gcse.async = true;
+	gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(gcse, s);
+  })();
+  window.onload = function(){
+	document.getElementById('gsc-i-id1').placeholder = 'Search';	
+  };
+
+$(document).ready(function(){
+
+$('.advanceSearch a').keydown(function(event){showSearchTips($(this),event);})
+$('#searchTipsModal').keydown(function(event){showSearchTips($(this),event);})
+
+function showSearchTips(obj,evt) {
+// if pressed enter key
+	if ( evt.which == 13 || evt.which == 32) {
+		showModal();
+		ga('send', 'pageview', "AdvanceSearch");
+		$(".advanceSearch a").attr('aria-expanded', 'true');
+		$('.searchTipsModal').focus();
+		evt.preventDefault();
+		}
+	if ( evt.which == 27 ) {
+		hideModal();
+		$(".advanceSearch a").attr('aria-expanded', 'false');
+		var modal = document.getElementById('searchTipsModal');
+		modal.style.display = "none";
+		$(".advanceSearch a").focus();
+		evt.preventDefault();
+		}
+}
+
+});
+function showModal(){
+	var modal = document.getElementById('searchTipsModal');
+	modal.style.display = "block";
+	ga('send', 'pageview', "AdvanceSearch");
+	document.getElementById("searchTipsBtn").setAttribute("aria-expanded", true);
+	window.setTimeout(function () {
+    document.getElementById('searchTipsModal').focus(); }, 0);
+}
+
+function hideModal(){
+	var modal = document.getElementById('searchTipsModal');
+	modal.style.display = "none";
+	document.getElementById("searchTipsBtn").setAttribute("aria-expanded", false);
+}
+</script>
+<div id="search" role="search" class="grid_4 omega">
+    	<table class="search">
+				<tbody>
+					<tr>
+						<td><div class="searchboxheader"><gcse:searchbox-only resultsurl="/search/ocwsearch.htm"></gcse:searchbox-only></div></td>
+						<td>
+							<div class="advanceSearch">
+								<a id="searchTipsBtn" onclick="showModal();" href="#" role="button" aria-label="search tips" aria-expanded="false" aria-describedby="searchtips">Search Tips</a>
+
+								<!-- The Modal -->
+								<div id="searchTipsModal" class="modal" tabindex="-1">
+								  <!-- Modal content -->
+									<div class="modal-content">
+										<div class="modal-body">
+											<button class="close" onclick="hideModal();" aria-label="close">X</button>
+											<span>
+												<b>Exclude words from your search</b>
+												<br />Put - in front of a word you want to leave out. For example, jaguar speed -car
+												<br /><br />
+												<b>Search for an exact match</b>
+												<br />Put a word or phrase inside quotes. For example, "tallest building".
+												<br /><br />
+												<b>Search for wildcards or unknown words</b>
+												<br />Put a * in your word or phrase where you want to leave a placeholder. For example, "largest * in the world".
+												<br /><br />
+												<b>Search within a range of numbers</b>
+												<br />Put .. between two numbers. For example, camera $50..$100.
+												<br /><br />
+												<b>Combine searches</b>
+												<br />Put "OR" between each search query. For example,  marathon OR race.
+												<br /><br />
+											</span>
+										</div>
+								  </div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+		</table>
+</div>
+<div class="clear"></div>
+<!--googleon: index-->
+<!-- *end header* -->
+
+				
+				
+			</div><!-- top grid end -->
+		</header><!-- top end -->
+			
+		<div id="center_global">
+		<div id="grid">
+			<div id="left">
+				<nav id="breadcrumb_global" aria-label="Breadcrumb">
+					<p>
+
+    <a href="/">Home</a>
+    
+        &raquo;
+        
+    
+    
+        
+            <a href="/courses">Courses</a>
+            
+                &raquo;
+                
+            
+            
+         
+    
+    
+        
+            
+            
+            Edgerton Center
+         
+    
+</p>
+
+				</nav>
+				<div id="global_title">
+					 <h1 class="title" itemprop="name" property="dct:title">
+        <span class="" id="parent-fieldname-title">
+            Edgerton Center
+        </span>
+    </h1>
+				</div>
+				<div class="global_wrapper">
+					<main id="global_inner" aria-labelledby="global_title">
+                    	<img src="/courses/edgerton-center/Final-image-Dominick-Reuter.jpg"
+                          alt="students working together in a small group"
+                          title="students working together in a small group" />
+                        <br />
+                        
+        <div class=""
+             id="parent-fieldname-image_caption_text">
+            <p class="caption">At the MIT Edgerton Center, students learn by doing. Photo courtesy of the Edgerton Center, by Dominick Reuter</p>
+            
+        </div>
+    
+                     	<br />
+                 		
+                    	
+	<h2 id="featured_course_heading" class="global">Featured Courses</h2>
+	 <nav id="coro2" aria-labelledby="featured_course_heading">
+    	<div id="left_scroll" class="nav" aria-hidden="true">&nbsp;</div>
+	    <div id="carousel_inner">
+		    <ul id="carousel_ul" role="presentation">
+	    		
+	    			<li>
+		    		   <div class="item">
+			        		<a aria-hidden="true"
+                href="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse"><img
+    src="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019/EC-719S19-th.jpg" /></a>
+			        		<p aria-hidden="true" class="badgeNew">New</p>
+			       		    <p class="cTitle"><a
+    href="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse">D-Lab: Water, Climate Change, and Health</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a aria-hidden="true"
+                href="/courses/edgerton-center/ec-s01-internet-technology-in-local-and-global-communities-spring-2005-summer-2005/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse"><img
+    src="/courses/edgerton-center/ec-s01-internet-technology-in-local-and-global-communities-spring-2005-summer-2005/ec-s01s05-th.jpg" /></a>
+			        		<p aria-hidden="true" class="badgeNews">Editor's Pick</p>
+			       		    <p class="cTitle"><a
+    href="/courses/edgerton-center/ec-s01-internet-technology-in-local-and-global-communities-spring-2005-summer-2005/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse">Internet Technology in Local and Global Communities</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a aria-hidden="true"
+                href="/courses/edgerton-center/ec-s06-prototypes-to-products-fall-2005/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse"><img
+    src="/courses/edgerton-center/ec-s06-prototypes-to-products-fall-2005/ec-s06f05-th.jpg" /></a>
+			        		<p aria-hidden="true" class="badgeNews">Editor's Pick</p>
+			       		    <p class="cTitle"><a
+    href="/courses/edgerton-center/ec-s06-prototypes-to-products-fall-2005/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse">Prototypes to Products</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a aria-hidden="true"
+                href="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse"><img
+    src="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004/ec-s06f04-th.jpg" /></a>
+			        		<p aria-hidden="true" class="badgeStart">Introductory</p>
+			       		    <p class="cTitle"><a
+    href="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse">Practical Electronics</a></p>
+				        </div>
+				    </li>
+			    
+	    		
+	    			
+			    
+	    		
+	    			
+			    
+	    		
+	    			
+			    
+	    		
+	    			<li>
+		    		   <div class="item">
+			        		<a aria-hidden="true"
+                href="/courses/edgerton-center/ec-715-d-lab-water-sanitation-and-hygiene-fall-2019/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse"><img
+    src="/courses/edgerton-center/ec-715-d-lab-water-sanitation-and-hygiene-fall-2019/ec-715f19-th.jpg" /></a>
+			        		<p aria-hidden="true" class="badgeNone">&nbsp;&nbsp;</p>
+			       		    <p class="cTitle"><a
+    href="/courses/edgerton-center/ec-715-d-lab-water-sanitation-and-hygiene-fall-2019/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse">D-Lab: Water, Sanitation, and Hygiene</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a aria-hidden="true"
+                href="/courses/edgerton-center/ec-210-visualization-for-mathematics-science-and-technology-education-spring-2016/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse"><img
+    src="/courses/edgerton-center/ec-210-visualization-for-mathematics-science-and-technology-education-spring-2016/EC-210S16-th.jpg" /></a>
+			        		<p aria-hidden="true" class="badgeNone">&nbsp;&nbsp;</p>
+			       		    <p class="cTitle"><a
+    href="/courses/edgerton-center/ec-210-visualization-for-mathematics-science-and-technology-education-spring-2016/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse">Visualization for Mathematics, Science, and Technology Education</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a aria-hidden="true"
+                href="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse"><img
+    src="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015/ec-716f15-th.jpg" /></a>
+			        		<p aria-hidden="true" class="badgeNone">&nbsp;&nbsp;</p>
+			       		    <p class="cTitle"><a
+    href="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse">D-Lab: Waste</a></p>
+				        </div>
+		    		   <div class="item">
+			        		<a aria-hidden="true"
+                href="/courses/edgerton-center/ec-710-d-lab-medical-technologies-for-the-developing-world-spring-2010/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse"><img
+    src="/courses/edgerton-center/ec-710-d-lab-medical-technologies-for-the-developing-world-spring-2010/ec-710s10-th.jpg" /></a>
+			        		<p aria-hidden="true" class="badgeNone">&nbsp;&nbsp;</p>
+			       		    <p class="cTitle"><a
+    href="/courses/edgerton-center/ec-710-d-lab-medical-technologies-for-the-developing-world-spring-2010/index.htm?utm_source=OCWDept&amp;utm_medium=CarouselSm&amp;utm_campaign=FeaturedCourse">D-Lab: Medical Technologies for the Developing World</a></p>
+				        </div>
+				    </li>
+			    
+	    		
+	    			
+			    
+	    		
+	    			
+			    
+	    		
+	    			
+			    
+
+		    </ul>
+	    </div>
+	    <div id="right_scroll" class="nav" aria-hidden="true">&nbsp;</div>
+    </nav>
+
+
+						<p>Established in 1992, the MIT Edgerton Center continues the hands-on legacy of &ldquo;Doc&rdquo; Edgerton by providing students with the opportunity to learn by doing. Our subjects are designed to provide students with experiential knowledge of how to make things work, be it building a micro controller or developing a strobe photography experiment. We offer courses for credit and independent projects for MIT students, as well as our summer short program in high-speed imaging for professionals. Through our suite of D-Lab subjects, students can apply their knowledge to help solve technical challenges in the developing world.</p><p>A variety of UROPs (Undergraduate Research Opportunity Projects) are also available, ranging from electronics and design projects to teaching.</p><p>We also sponsor and work closely with student clubs and teams. At the Edgerton Student Shop in Building 44 we provide students with training and access to modern machine tools. In our K-12 Outreach program students help to teach hands-on science and engineering lessons.</p>
+						
+                   		
+    
+    
+    <div class="clear"></div>
+        <br />
+    <div id="filterCoursesListDiv">
+
+
+        <form id="filterCoursesListForm" class="filterCoursesListForm" aria-label="You can filter the courses by year and level and sort the courselists Course Titlewise, Course Numberwise or Taught year">
+            <div id="sortingFormDivId" tabindex="0">
+                <legend><h3>Sort Courses by</h3></legend>
+                <div style="margin-left:0px">
+                    <select id="SortingOption" name="sortBy" aria-label="Sort courses" class="courseListSort" tabindex="0" autocomplete="off">
+                        
+                        <option value="course_number" order="0"> Course Number</option>
+                        
+                        <option value="oldest_newest" order="1">Most Recent First</option>
+                        <option value="course_title" order="0">Course Title </option>
+                    </select>
+                </div>
+            </div>
+            <div id="filteringFormDIvId">
+                <div id="featureFilter">
+                    <legend><h3>Filter by Feature </h3></legend>
+                    <select multiple="multiple" class="multiselector" placeholder="check additional features" required placeholder="Select" aria-label="Filter by Content features" tabindex="0" autocomplete="off">
+                        <option value="clearAll" role="clearAll">Clear All</option>
+                        <option value="completeVideo" role="option">Complete video lectures</option>
+                        <option value="completeAudio" role="option">Complete audio lectures</option>
+                        <option value="otherVideo" role="option">Other video</option>
+                        <option value="otherAudio" role="option">Other audio</option>
+                        <option value="onlineTextbooks" role="option">Online textbooks</option>
+                        <option value="completeLectures" role="option">Complete lecture notes</option>
+                        <option value="assesmentsWithSolution" role="option">Assessments with solutions</option>
+                        <option value="studentProjects" role="option">Student projects</option>
+                        <option value="instructorInsights" role="option">Instructor insights</option>
+
+
+                    </select>
+
+                </div>
+                <div>
+                    <legend><h3>Filter by Level</h3></legend>
+                    <select id="filterCoursesListLevel" class="courseListFilter" name="level" role="listbox" aria-labelledby="level" tabindex="0" autocomplete="off">
+                        <option value="0" role="option">All Levels</option>
+                        <option value="Undergraduate" role="option">Undergraduate</option>
+                        <option value="Graduate" role="option">Graduate</option>
+                    </select>
+                </div>
+            </div>
+
+
+        </form>
+
+
+    </div>
+    
+    
+
+
+    <div class="clear"></div>
+    <br />
+    <h2 class="global">
+        <span class="" id="parent-fieldname-title">
+            Edgerton Center
+        </span>
+    Courses</h2>
+       <div class="courseListDiv">
+			<ul class="coursesList">
+                <li class="courseListHeaderRow">
+                    <ul class="courseRow">
+                        <li class="courseNumCol">
+                              Course #
+                        </li>
+                        <li class="courseTitleCol">
+                            Course Title
+                        </li>
+                        <li class="courseLevelCol">
+                            Level
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="January IAP 2010"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Recreate Experiments from History: Inform the Future from the Past: Galileo"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.050"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-050-recreate-experiments-from-history-inform-the-future-from-the-past-galileo-january-iap-2010">
+							  	EC.050
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-050-recreate-experiments-from-history-inform-the-future-from-the-past-galileo-january-iap-2010">
+                                   Recreate Experiments from History: Inform the Future from the Past: Galileo
+                                   (January IAP 2010)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-050-recreate-experiments-from-history-inform-the-future-from-the-past-galileo-january-iap-2010">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Spring 2016"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Visualization for Mathematics, Science, and Technology Education"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.210"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-210-visualization-for-mathematics-science-and-technology-education-spring-2016">
+							  	EC.210
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-210-visualization-for-mathematics-science-and-technology-education-spring-2016">
+                                   Visualization for Mathematics, Science, and Technology Education
+                                   (Spring 2016)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-210-visualization-for-mathematics-science-and-technology-education-spring-2016">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2009"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab I: Development"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.701"
+                        data-complete_lectures="true"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-701j-d-lab-i-development-fall-2009">
+							  	EC.701J
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-701j-d-lab-i-development-fall-2009">
+                                   D-Lab I: Development
+                                   (Fall 2009)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-701j-d-lab-i-development-fall-2009">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Fall 2012"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Cross-Cultural Investigations: Technology and Development"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.702J"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/anthropology/21a-801j-cross-cultural-investigations-technology-and-development-fall-2012">
+							  	EC.702J
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/anthropology/21a-801j-cross-cultural-investigations-technology-and-development-fall-2012">
+                                   Cross-Cultural Investigations: Technology and Development
+                                   (Fall 2012)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/anthropology/21a-801j-cross-cultural-investigations-technology-and-development-fall-2012">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Spring 2010"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Medical Technologies for the Developing World"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.710"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-710-d-lab-medical-technologies-for-the-developing-world-spring-2010">
+							  	EC.710
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-710-d-lab-medical-technologies-for-the-developing-world-spring-2010">
+                                   D-Lab: Medical Technologies for the Developing World
+                                   (Spring 2010)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-710-d-lab-medical-technologies-for-the-developing-world-spring-2010">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Spring 2011"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Energy"
+                        data-assesments_with_solution="true"
+                        data-complete_video="true"
+                        data-complete_audio="false"
+                        data-other_video="true"
+                        data-courseno="EC.711"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-711-d-lab-energy-spring-2011">
+							  	EC.711
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-711-d-lab-energy-spring-2011">
+                                   D-Lab: Energy
+                                   (Spring 2011)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-711-d-lab-energy-spring-2011">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2019"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Water, Sanitation, and Hygiene"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.715"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-715-d-lab-water-sanitation-and-hygiene-fall-2019">
+							  	EC.715
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-715-d-lab-water-sanitation-and-hygiene-fall-2019">
+                                   D-Lab: Water, Sanitation, and Hygiene
+                                   (Fall 2019)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-715-d-lab-water-sanitation-and-hygiene-fall-2019">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Spring 2007"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Disseminating Innovations for the Common Good"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="true"
+                        data-courseno="EC.715"
+                        data-complete_lectures="true"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-715-d-lab-disseminating-innovations-for-the-common-good-spring-2007">
+							  	EC.715
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-715-d-lab-disseminating-innovations-for-the-common-good-spring-2007">
+                                   D-Lab: Disseminating Innovations for the Common Good
+                                   (Spring 2007)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-715-d-lab-disseminating-innovations-for-the-common-good-spring-2007">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2015"
+                        data-instructor_insights="true"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Waste"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.716"
+                        data-complete_lectures="true"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015">
+							  	EC.716
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015">
+                                   D-Lab: Waste
+                                   (Fall 2015)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Spring 2019"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Water, Climate Change, and Health"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.719"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019">
+							  	EC.719
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019">
+                                   D-Lab: Water, Climate Change, and Health
+                                   (Spring 2019)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Spring 2010"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab II: Design"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.720"
+                        data-complete_lectures="true"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-720j-d-lab-ii-design-spring-2010">
+							  	EC.720J
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-720j-d-lab-ii-design-spring-2010">
+                                   D-Lab II: Design
+                                   (Spring 2010)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-720j-d-lab-ii-design-spring-2010">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Spring 2009"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Wheelchair Design in Developing Countries"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="true"
+                        data-courseno="EC.721"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-721-wheelchair-design-in-developing-countries-spring-2009">
+							  	EC.721
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-721-wheelchair-design-in-developing-countries-spring-2009">
+                                   Wheelchair Design in Developing Countries
+                                   (Spring 2009)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-721-wheelchair-design-in-developing-countries-spring-2009">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Spring 2010"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Special Topics at Edgerton Center:Developing World Prosthetics"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.722"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-722-special-topics-at-edgerton-center-developing-world-prosthetics-spring-2010">
+							  	EC.722
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-722-special-topics-at-edgerton-center-developing-world-prosthetics-spring-2010">
+                                   Special Topics at Edgerton Center:Developing World Prosthetics
+                                   (Spring 2010)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-722-special-topics-at-edgerton-center-developing-world-prosthetics-spring-2010">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Fall 2014"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Supply Chains"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.733J"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/sloan-school-of-management/15-772j-d-lab-supply-chains-fall-2014">
+							  	EC.733J
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/sloan-school-of-management/15-772j-d-lab-supply-chains-fall-2014">
+                                   D-Lab: Supply Chains
+                                   (Fall 2014)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/sloan-school-of-management/15-772j-d-lab-supply-chains-fall-2014">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Spring 2005"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Internet Technology in Local and Global Communities"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="true"
+                        data-courseno="EC.S01"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s01-internet-technology-in-local-and-global-communities-spring-2005-summer-2005">
+							  	EC.S01
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-s01-internet-technology-in-local-and-global-communities-spring-2005-summer-2005">
+                                   Internet Technology in Local and Global Communities
+                                   (Spring 2005)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s01-internet-technology-in-local-and-global-communities-spring-2005-summer-2005">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Spring 2005"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Water Jet Technologies"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.S02"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s02-water-jet-technologies-spring-2005">
+							  	EC.S02
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-s02-water-jet-technologies-spring-2005">
+                                   Water Jet Technologies
+                                   (Spring 2005)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s02-water-jet-technologies-spring-2005">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2008"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="NextLab I: Designing Mobile Technologies for the Next Billion Users"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.S06"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/media-arts-and-sciences/mas-965-nextlab-i-designing-mobile-technologies-for-the-next-billion-users-fall-2008">
+							  	EC.S06
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/media-arts-and-sciences/mas-965-nextlab-i-designing-mobile-technologies-for-the-next-billion-users-fall-2008">
+                                   NextLab I: Designing Mobile Technologies for the Next Billion Users
+                                   (Fall 2008)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/media-arts-and-sciences/mas-965-nextlab-i-designing-mobile-technologies-for-the-next-billion-users-fall-2008">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Spring 2007"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Design for Demining"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="true"
+                        data-courseno="EC.S06"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s06-design-for-demining-spring-2007">
+							  	EC.S06
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-s06-design-for-demining-spring-2007">
+                                   Design for Demining
+                                   (Spring 2007)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s06-design-for-demining-spring-2007">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2005"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Prototypes to Products"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="true"
+                        data-courseno="EC.S06"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s06-prototypes-to-products-fall-2005">
+							  	EC.S06
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-s06-prototypes-to-products-fall-2005">
+                                   Prototypes to Products
+                                   (Fall 2005)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s06-prototypes-to-products-fall-2005">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Fall 2004"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Practical Electronics"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.S06"
+                        data-complete_lectures="true"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004">
+							  	EC.S06
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004">
+                                   Practical Electronics
+                                   (Fall 2004)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2004"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Photovoltaic Solar Energy Systems"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.S07"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Undergraduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s07-photovoltaic-solar-energy-systems-fall-2004">
+							  	EC.S07
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-s07-photovoltaic-solar-energy-systems-fall-2004">
+                                   Photovoltaic Solar Energy Systems
+                                   (Fall 2004)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s07-photovoltaic-solar-energy-systems-fall-2004">
+                               
+							   Undergraduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Fall 2009"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="X PRIZE Workshop: Grand Challenges in Energy"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="true"
+                        data-courseno="EC.421"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Graduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/engineering-systems-division/esd-172j-x-prize-workshop-grand-challenges-in-energy-fall-2009">
+							  	EC.421J
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/engineering-systems-division/esd-172j-x-prize-workshop-grand-challenges-in-energy-fall-2009">
+                                   X PRIZE Workshop: Grand Challenges in Energy
+                                   (Fall 2009)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/engineering-systems-division/esd-172j-x-prize-workshop-grand-challenges-in-energy-fall-2009">
+                               
+							   Graduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2015"
+                        data-instructor_insights="true"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Waste"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.786"
+                        data-complete_lectures="true"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Graduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015">
+							  	EC.786
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015">
+                                   D-Lab: Waste
+                                   (Fall 2015)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-716-d-lab-waste-fall-2015">
+                               
+							   Graduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Spring 2019"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="D-Lab: Water, Climate Change, and Health"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.789"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Graduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019">
+							  	EC.789
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019">
+                                   D-Lab: Water, Climate Change, and Health
+                                   (Spring 2019)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-719-d-lab-water-climate-change-and-health-spring-2019">
+                               
+							   Graduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2012"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Cross-Cultural Investigations: Technology and Development"
+                        data-assesments_with_solution="false"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.792J"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Graduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/anthropology/21a-801j-cross-cultural-investigations-technology-and-development-fall-2012">
+							  	EC.792J
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/anthropology/21a-801j-cross-cultural-investigations-technology-and-development-fall-2012">
+                                   Cross-Cultural Investigations: Technology and Development
+                                   (Fall 2012)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/anthropology/21a-801j-cross-cultural-investigations-technology-and-development-fall-2012">
+                               
+							   Graduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow evenRow"
+                        data-semester="Fall 2005"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Engineering Capacity in Community-Based Healthcare"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.S11"
+                        data-complete_lectures="false"
+                        data-other_audio="false"
+                        data-student_projects="false"
+                        data-level="Graduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s11-engineering-capacity-in-community-based-healthcare-fall-2005">
+							  	EC.S11
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-s11-engineering-capacity-in-community-based-healthcare-fall-2005">
+                                   Engineering Capacity in Community-Based Healthcare
+                                   (Fall 2005)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s11-engineering-capacity-in-community-based-healthcare-fall-2005">
+                               
+							   Graduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+                
+                
+                
+
+                    <li class="courseListRow oddRow"
+                        data-semester="Fall 2004"
+                        data-instructor_insights="false"
+                        data-online_textbooks="false"
+                        data-title="Practical Electronics"
+                        data-assesments_with_solution="true"
+                        data-complete_video="false"
+                        data-complete_audio="false"
+                        data-other_video="false"
+                        data-courseno="EC.S11"
+                        data-complete_lectures="true"
+                        data-other_audio="false"
+                        data-student_projects="true"
+                        data-level="Graduate">
+                       	<ul class="courseRow">
+                       	<li class="courseNumCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004">
+							  	EC.S11
+							</a>
+						</li>
+					 	<li class="courseTitleCol">
+					 	    <h4 class="course_title">
+                                <a rel="coursePreview"
+    class="preview"
+    href="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004">
+                                   Practical Electronics
+                                   (Fall 2004)
+                                </a>
+                            </h4>
+                        </li>
+                       	<li class="courseLevelCol">
+							<a rel="coursePreview" class="preview"
+          href="/courses/edgerton-center/ec-s06-practical-electronics-fall-2004">
+                               
+							   Graduate
+							   
+							</a>
+					  </li>
+                   </ul>
+                   </li>
+                   
+                
+                
+             </ul>
+       </div>
+       <div class="noResultsMsg" style="display:none"><h3>No courses match the topics and filters you have selected.</h3></div>
+ 
+ 		
+   
+
+ <div id="coursePreview" role="dialog" aria-labelledby="courseTitle" aria-hidden="true" class="coursePreview" style="display: none; width: 468px;">
+   	<div id="courseInfoInner" role="document">	
+	<a title="Close Window" href="javascript:void(0);" class="close">
+			<img class="btn_close" alt="Close" title="Close Window" src="/images/close.png">
+		</a>
+				<div class="coursePreviewTop"><h3 id="courseTitle"></h3></div>
+				<div class="coursePreviewBottom">
+					<div class="images">
+						<img id="courseThumb" class="first" alt="Course image thumbnail alt-text goes here." src="">
+							<br />
+						<a id="viewCourse" href="javascript:void(0)" title="Click here to view this course."><img alt="Click here to view this course." src="/images/button_view-course.png">
+						</a>
+					</div>
+					<div class="info" title="CourseInfo">
+						<table class="coursePreviewTable">
+						  <tbody>
+							<tr>
+								 <td colspan="2">
+									<p id="courseDesc" class="intro">Some Description</p>
+								</td>
+							</tr>
+							<tr class="instructor">
+								<td class="first">
+									<p>
+										<strong>Instructor(s)</strong>
+									</p>
+								</td>
+								<td>
+									<p id="courseInstructors">Prof.</p>
+								</td>
+							</tr>
+														
+							<tr>
+								<td class="first">
+									<p>
+										<strong>As Taught In</strong>
+									</p>
+								</td>
+								<td>
+									<p id="courseSem">Spring 2002</p>
+								</td>
+							</tr>							
+							<tr>
+								<td>
+									<p>
+										<strong>Course Number</strong>
+									</p>
+								</td>
+								<td>
+									<p id="courseNo">2.24</p>
+								</td>
+							</tr>
+							
+							<tr id="level">
+								<td>
+									<p>
+										<strong>Level</strong>
+									</p>
+								</td>
+								<td>
+									<p id="courseLevel">Undergraduate/Graduate</p>
+								</td>
+							</tr>		
+							<tr class="last">
+								<td>
+									<p>
+										<strong>Features</strong>
+									</p>
+								</td>
+								<td>
+									<p id="courseFeatures">Lecture Notes, Student Work</p>
+								</td>
+							</tr>
+						  </tbody>
+						</table>
+					</div>		
+				</div>
+			</div>
+		</div>			
+
+
+<!--googleoff: index-->
+<div class="help slide-bottom">
+  <div class="help-message">
+    <a class="help-engage" href="javascript: trackEvents('Bottom Get Started','bottom get started Click','Help Overlay');">Need help getting started?</a>
+    <a href="javascript:disableHelpPopup(); trackEvents('Bottom Don\'t Show','bottom don\'t show Click','Help Overlay');" class="help-dismiss">Don't show me this again</a>
+  </div><!--help-message-->
+</div><!--help slide-bottom-->
+
+
+<div class="help popup-center">
+  <div class="help-message">
+    <p class="help-dismiss"><a href="javascript:disableHelpPopup(); trackEvents('Popup Don\'t Show','popup don\'t show Click','Help Overlay');">Don't show me this again</a></p>
+    <h2>Welcome!</h2>
+    
+    <p>This page lists OCW courses from just one of over 30 MIT departments. </p>
+    
+    
+    <p><strong>MIT OpenCourseWare</strong> is a free &amp; open publication of material from thousands of MIT courses, covering the entire MIT curriculum.</p>
+
+    <p><strong>No enrollment or registration.</strong> Freely browse and use OCW materials at your own pace. There's no signup, and no start or end dates.</p>
+
+    <p><strong>Knowledge is your reward.</strong> Use OCW to guide your own life-long learning, or to teach others. We don't offer credit or certification for using OCW.</p>
+
+    <p><strong>Made for sharing</strong>. Download files for later. Send to friends and colleagues. Modify, remix, and reuse (just remember to cite OCW as the source.)</p>
+
+    <p class="help-engage">Learn more at <a href="https://ocw.mit.edu/help/get-started-with-ocw/" onclick="trackEvents('Popup Get Started','popup get started Click','Help Overlay');">Get Started with MIT OpenCourseWare</a></p>
+  </div><!-- help-message -->
+</div> <!--help popup-center-->
+<!--googleon: index-->
+
+
+                        <h2 class="global">Archived Edgerton Center Courses</h2> <p>Some prior versions of courses listed above have been archived in OCW's <a href="http://dspace.mit.edu/handle/1721.1/33971">DSpace@MIT repository</a> for long-term access and preservation. Links to archived prior versions of a course may be found on that course's &quot;Other Versions&quot; tab.</p> <p>Additionally, the <a href="/courses/edgerton-center/archived-edgerton-center-courses">Archived Edgerton Center Courses</a> page has links to every archived course from this department.<a href="/courses/aeronautics-and-astronautics/archived-aeronautics-and-astronautics-courses"><br /> </a></p>
+					</main><!-- global_inner end -->
+				</div><!-- global_wrapper end -->
+			</div><!-- left end -->
+			<aside id="right_global">
+					<div>
+    
+
+
+
+</div>
+
+
+					
+				<div class="white_side">
+					
+        <div class="" id="parent-fieldname-bottom_text_1">
+            <p><a class="deptlink" href="http://web.mit.edu/edgerton">Edgerton Center</a></p> <p><a class="deptlink" href="http://www.facebook.com/MITEdgertonCenter">Edgerton Center on Facebook</a></p>
+            
+        </div>
+    
+				</div>
+				  <div>
+    
+
+
+
+</div>
+
+<!-- RSI google ad space-->
+
+
+
+<div id="google_ads">    
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script type="text/javascript">var googletag = googletag || {}; googletag.cmd = googletag.cmd || [];</script>
+    <script type="text/javascript">
+googletag.cmd.push(function() {googletag.defineSlot('/1064917/COURSE_SLOT_A', [[300, 250], [300, 300], [180, 200]], 'COURSE_SLOT_A').addService(googletag.pubads());googletag.defineSlot('/1064917/COURSE_SLOT_B', [[300, 250], [300, 300], [180, 150], [180, 200]], 'COURSE_SLOT_B').addService(googletag.pubads());googletag.defineSlot('/1064917/COURSE_SLOT_C', [[160, 600], [160, 650]], 'COURSE_SLOT_C').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+ googletag.enableServices();
+});</script>
+    <script language="javascript" type="text/javascript">googletag.cmd.push(function() {googletag.pubads().set("TYPE","HOUSE");googletag.pubads().set("DEPARTMENT","EDGERTON");googletag.pubads().set("PG_SECTION","DHP");googletag.pubads().set("PG_AREA","DHP");googletag.pubads().set("PG_TLP","DHP");})
+</script>
+    
+    <div id='COURSE_SLOT_A' style='width:180; height:200; overflow: visible;'>
+    	<script>googletag.cmd.push(function() { googletag.display('COURSE_SLOT_A'); });</script>
+    </div>
+    <div id='COURSE_SLOT_B' style='width:180; height:200;; overflow: visible;'>
+    	<script>googletag.cmd.push(function() { googletag.display('COURSE_SLOT_B'); });</script>
+    </div>
+    <div id='COURSE_SLOT_C' style='width:160; height:600;; overflow: visible;'>
+    	<script>googletag.cmd.push(function() { googletag.display('COURSE_SLOT_C'); });</script>
+    </div>
+</div>
+
+<!-- End RSI ads--> 
+
+
+<div>
+    
+
+
+
+</div>
+
+			</aside><!-- right_global end -->			
+		</div>
+	</div>
+		
+		<footer id="bottom">
+			<div id="grid">
+				
+<div id="portletwrapper-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572"
+     class="portletWrapper kssattr-portlethash-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572"><div class="portletStaticText portlet-static-site-footer"><div id="footer"><nav aria-label="Footer">     <nav id="foot-c1" class="grid_2 alpha" aria-labelledby="f-find-courses">       <span class="footer" id="f-find-courses" aria-hidden="true">Find Courses</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="/courses/find-by-topic/">Find by Topic</a></li>
+    <li><a href="/courses/find-by-number/">Find by Course Number</a></li>
+    <li><a href="/courses/find-by-department/">Find by Department</a></li>
+    <li><a href="/courses/new-courses/">New Courses</a></li>
+    <li><a href="/courses/most-visited-courses/">Most Visited Courses</a></li>
+    <li><a href="/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+    <li><a href="/courses/audio-video-courses/">Audio/Video Courses</a></li>
+    <li><a href="/courses/online-textbooks/">Online Textbooks</a></li>
+    <li><a href="/courses/instructor-insights/">Instructor Insights</a></li>
+    <li><a href="/resources/">Supplemental Resources</a></li>
+    <li><a href="/courses/mitx-related-courseware/">MITx &amp; Related OCW Courses</a></li>
+    <li><a href="/courses/mit-open-learning-library/">MIT Open Learning Library</a></li>
+    <li><a href="/courses/translated-courses/">Translated Courses</a></li>
+</ul>
+</nav>
+<div id="foot-c2" class="grid_2"><nav aria-labelledby="f-for-educators">         <span id="f-for-educators" class="footer" aria-hidden="true">For Educators</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="https://chalk-radio.simplecast.com/">Chalk Radio Podcast</a></li>
+    <li><a href="/educator/">OCW Educator Portal </a></li>
+    <li><a href="/courses/instructor-insights/">Instructor Insights by Department</a></li>
+    <li><a href="https://openlearning.mit.edu/campus/digital-innovations/" aria-label="External Link: Residential Digital Innovations">Residential Digital Innovations </a></li>
+    <li><a href="/high-school/">OCW Highlights for High School</a></li>
+    <li><a href="/educator/additional-resources/">Additional Resources</a></li>
+</ul>
+</nav></div>
+<nav class="grid_2" id="foot-c3" aria-labelledby="f-donate">       <span id="f-donate" class="footer" aria-hidden="true">Give Now</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="/give/">Make a Donation</a></li>
+    <li><a href="/give/why-give/">Why Give?</a></li>
+    <li><a href="/give/our-supporters/">Our Supporters</a></li>
+    <li><a href="/give/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+    <li><a href="/support/">Become a Corporate Sponsor</a></li>
+</ul>
+</nav>
+<div class="grid_2" id="foot-c4"><nav aria-labelledby="f-about">         <span id="f-about" class="footer" aria-hidden="true">About</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="/about/">About OpenCourseWare</a></li>
+    <li><a href="/about/site-statistics/">Site Statistics</a></li>
+    <li><a href="/about/ocw-stories/">OCW Stories</a></li>
+    <li><a href="/about/newsletter/">Newsletter</a></li>
+    <li><a href="https://www.ocw-openmatters.org/">Open Matters Blog</a></li>
+</ul>
+</nav><!--about-->       <nav aria-labelledby="f-tools">         <span id="f-tools" class="footer" aria-hidden="true">Tools</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="/help/">Help &amp; FAQs</a></li>
+    <li><a href="/about/contactus">Contact Us</a></li>
+    <li><a href="https://accessibility.mit.edu/" target="_blank">Accessibility</a></li>
+    <li><a href="/help/site-map/">Site Map</a></li>
+    <li><a href="/terms/">Privacy &amp; Terms of Use</a></li>
+    <li><a href="/help/rss/">RSS Feeds</a></li>
+</ul>
+</nav><!--tools--></div>
+</nav> <aside style="min-height: 289px;" aria-labelledby="f-our-corporate-supporters" class="grid_4 omega" id="foot-c5">           <span aria-hidden="true" class="footer" id="f-our-corporate-supporters">Our Corporate Supporters</span>           <!-- HOME_CORP_LOGO_1 -->
+<div id="div-gpt-ad-1388181177156-0" class="sponsors_google_ads_even"><script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-0'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_2 -->
+<div id="div-gpt-ad-1388181177156-1" class="sponsors_google_ads_odd"><script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-1'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_3 -->
+<div id="div-gpt-ad-1388181177156-2" class="sponsors_google_ads_even"><script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-2'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_4 -->
+<div id="div-gpt-ad-1388181177156-3" class="sponsors_google_ads_odd"><script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-3'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_5 -->
+<div id="div-gpt-ad-1388181177156-4" class="sponsors_google_ads_even"><script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-4'); });
+              </script></div>
+<!-- HOME_CORP_LOGO_6 -->
+<div id="div-gpt-ad-1388181177156-5" class="sponsors_google_ads_odd"><script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-5'); });
+              </script></div>
+</aside>
+<div class="grid_12 alpha omega" itemprop="publisher" itemscope="" itemtype="http://schema.org/CollegeOrUniversity">
+<h4 class="footer" style="border-top: thin solid #d5c9ba; padding-top: 10px; margin-bottom: 10px;">About <span itemprop="name">MIT OpenCourseWare</span></h4>
+<p style="color: #999; font-size: 1em; line-height: 1.5em; margin-top: 10px;" itemprop="description">MIT OpenCourseWare is an online publication of materials from over 2,500 MIT courses, freely sharing knowledge with learners and educators around the world. <a href="/about/">Learn more &raquo;</a></p>
+</div>
+<div id="foot-copy" class="grid_12 alpha omega" style="border-top: none;"><a href="http://web.mit.edu"><img src="/images/logo_mit.png" alt="Massachusetts Institute of Technology logo and name." style="width: 195; height: 44;" /></a><a href="https://openlearning.mit.edu/"><img src="/images/mitol_logo.png" alt="MIT Open Learning logo and name." style="width: 265; height: 50; vertical-align: top; padding-left:30px;" /></a><a href="https://www.oeglobal.org/"><img src="/images/oeg_logo.gif" alt="Open Education Consortium logo." style="width: 219px; height: 59px; vertical-align: top; padding-left:20px;" /></a><a rel="license" itemprop="useRightsUrl" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="/images/cc_by-nc-sa.png" alt="Creative Commons logo with terms BY-NC-SA." style="width: 126px; height: 44px; margin-right: 0; padding-left: 20px;" /></a>
+<p class="copyright">&copy; 2001&ndash;2018<br />
+Massachusetts Institute of Technology</p>
+<p style="font-size: 0.9em; margin-bottom: 15px;">Your use of the MIT OpenCourseWare site and materials is subject to our <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">Creative Commons License</a> and other <a href="/terms/" rel="cc:morePermissions">terms of use</a>.</p>
+</div>
+</div></div>
+
+</div>
+
+
+
+
+
+                
+			</div> <!-- bottom grid end -->
+		</footer><!-- footer bottom end -->
+
+
+   </body>
+ </html>
