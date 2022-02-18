@@ -1,10 +1,6 @@
 from html.parser import HTMLParser
 import urllib.request as urllib2
-import unicodedata
 import re
-
-def stripper(string):
-    return "".join(char for char in string if unicodedata.category(char)[0]!="C") 
 
 class CourseParser(HTMLParser):
     #initializing course list
@@ -14,7 +10,9 @@ class CourseParser(HTMLParser):
 
     #testAttr should remain constant, until the site makes change
     testAttr = [('rel', 'coursePreview'), ('class', 'preview'), ]
-    
+    #stripping pattern, should remain constant
+    pattern = re.compile(r'\s{2,}|\n\r\t')
+
     def handle_starttag(self, startTag, attrs):
         if(startTag == 'a'):
             if(all(map(lambda i, j: i==j, attrs, self.testAttr))):
@@ -23,14 +21,13 @@ class CourseParser(HTMLParser):
                 if(self.countEnd == 1):
                     self.listsCourse.append((attrs[2][1], ))
         else:
-            self.addAsCoruse = True
+            self.addAsCoruse = False
 
     def handle_data(self, data):
         if(self.addAsCourse):
-            data = re.sub(r'\s{2,}', '', data)
-            if((data == ' ') | (data == '')):
-                return
-            self.listsCourse[-1] += (data, )
+            data = self.pattern.sub('', data)
+            if(data != ''):
+                self.listsCourse[-1] += (data, )
             if(self.countEnd == 3):
                 self.countEnd = 0
                 self.addAsCourse = False
@@ -40,7 +37,7 @@ class CourseParser(HTMLParser):
 parser = CourseParser()
 course = input()
 html_page = html_page = urllib2.urlopen("https://ocw.mit.edu/courses/"+course+"/")
-parser.feed(stripper(html_page.read().decode("UTF-8")))
+parser.feed(html_page.read().decode("UTF-8"))
 
 #Printing the extracted course infos
 print(parser.listsCourse)
