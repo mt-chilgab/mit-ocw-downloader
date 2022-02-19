@@ -1,12 +1,4 @@
-param([Parameter(Mandatory=$true)][String]$LectureCode,
-      [Parameter(Mandatory=$true)][String]$LectureSeasonYear,
-      [Parameter(Mandatory=$true)][Int32]$LectureNumbers)
-
-$LectureSeasonYear -Match '[a-z, A-Z]{1}' > $null
-$LectureSeason = $Matches[0].ToUpper()
-$LectureSeasonYear -Match '[0-9]{1,4}' > $null
-$LectureYear = [String]([Int32]$Matches[0] % 100)
-$TotalLectureCode = "MIT"+$LectureCode.ToUpper()+$LectureSeason+$LectureYear
+param([Parameter(Mandatory=$true)][String]$LectureCode)
 
 $pwd_ = $pwd
 $dd = Read-Host "Where to download the files?"

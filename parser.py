@@ -2,11 +2,15 @@ from html.parser import HTMLParser
 import urllib.request as urllib2
 import re
 
-def isListNotNull(l):
-    if(l):
-        return True
-    else:
-        return False
+
+def isListNotNull(l, d):
+    if((d == 1) | ((not isinstance(l, list)) & (not isinstance(l, tuple)))):
+        return bool(l)
+    res = False
+    for i in l:
+        res |= isListNotNull(i, d-1)
+    return res
+
 
 class CourseParser(HTMLParser):
     
@@ -28,19 +32,18 @@ class CourseParser(HTMLParser):
     #   ( url to course page, course number, course title, course level(undergraduate/graduate) )    
     #
     def handle_starttag(self, startTag, attrs):
-        if(isListNotNull(attrs) & (startTag == 'a')):
+        self.addAsCourse = False
+        if(isListNotNull(attrs, 2) & (startTag == 'a')):
             if(all(map(lambda i, j: i==j, attrs, self.testAttr))):
                 self.addAsCourse = True            
                 self.countEnd += 1
                 if(self.countEnd == 1):
                     self.courseList.append((attrs[2][1], ))
-            else:
-                self.addAsCourse = False
 
     def handle_data(self, data):
         if(self.addAsCourse):
             data = self.pattern.sub('', data)
-            if(data != ''):
+            if((data != ' ') & (data != '')):
                 self.courseList[-1] += (data, )
             if(self.countEnd == 3):
                 self.countEnd = 0
@@ -80,20 +83,20 @@ class HomepageParser(HTMLParser):
     # self.problemHomes -> same as above
     # self.lectureNoteHomes -> same as above
     #
+    #
+    # works by looking up for <ul class="specialfeatures">...(another tags)...<a href="(links including videos/problems/lecture notes)">
+    #
     def handle_starttag(self, startTag, attrs):
-        if(isListNotNull(attrs) & (startTag == 'ul')):
+
+        if(isListNotNull(attrs, 1) & (startTag == 'ul')):
             if(attrs[0] == ('class', 'specialfeatures')):
                 self.addAsHome = (True, False)
-            else:
-                self.addAsHome = (False, False)
-    
-        if(self.addAsHome[0] & (startTag == 'a')):
+
+        if(isListNotNull(attrs, 2) & self.addAsHome[0] & (startTag == 'a')):
             if(attrs[0][0] == 'href'):
                 self.addAsHome = (True, True)
                 self.videoHomes.append((attrs[0][1],))
-            else:
-                self.addAsHome = (True, False)
-
+    
     def handle_endtag(self, endTag):
         if(all(self.addAsHome) & (endTag == 'ul')):
             self.addAsHome = (False, False)
@@ -101,7 +104,7 @@ class HomepageParser(HTMLParser):
     def handle_data(self, data):
         if(all(self.addAsHome)):
             data = self.pattern.sub('', data)
-
+            
             # used & because some lectures provide with captions: video and caption link lead to the same page
             if(bool(re.search(r'video', self.videoHomes[-1][0])) | bool(re.search(r'[Vv]ideo', data))):
                 self.videoHomes[-1] = (data, self.videoHomes[-1][0])
@@ -120,20 +123,17 @@ class PageParser(HTMLParser):
     
     def __init__(self):
         HTMLParser.__init__(self)
-        self.handleMode = None
+        self.pattern = re.compile(r'\s{2,}|\n\r\t')
         self.downloadList = list()
 
     def handle_starttag(self, startTag, attrs):
-        if(isListNotNull(attrs) & (startTag == 'a')):
-            i = 0
-            for res in map(lambda j: j[0]=='href', attrs):
-                if(res & isListNotNull(attrs[i])):
-                    if(re.search(r'\.mp4$', attrs[i][1])):
-                        self.downloadList.append(attrs[i][1])
-                    elif(re.search(r'\.pdf$', attrs[i][1])):
-                        self.downloadList.append(attrs[i][1])
-                i += 1 
-
+        if(isListNotNull(attrs, 2) & (startTag == 'a')):
+            booleanMap = list(map(lambda i: i[0]=="href", attrs))
+            if(any(booleanMap)):
+                hrefIndex = booleanMap.index(True)
+                if(re.search(r'(\.mp4$|\.pdf$)', attrs[hrefIndex][1])):
+                    self.downloadList.append(attrs[hrefIndex][1])
+            
 
 
 if __name__ == "__main__":
@@ -192,7 +192,3 @@ if __name__ == "__main__":
 
     print("\n", pageParser.downloadList)
     print(len(pageParser.downloadList))
-
-
-    
-
